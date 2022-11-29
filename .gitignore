@@ -1,2 +1,4 @@
 coverage.xml
 .env
+tmp
+bin
