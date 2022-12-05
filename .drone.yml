@@ -36,9 +36,9 @@ steps:
     image: golang:1.18
     environment:
       GITHUB_API_KEY:
-        from_secret: github_api_key
+        from_secret: gh_api_key
       GITHUB_API_USER:
-        from_secret: github_api_user
+        from_secret: gh_api_user
     commands:
       - go install github.com/guilhem/bump@v0.2.1
       - git remote add authenticated-origin https://$GITHUB_API_USER:$GITHUB_API_KEY@github.com/$DRONE_REPO
@@ -64,7 +64,7 @@ steps:
     environment:
       GO111MODULE: on
       GITHUB_API_KEY:
-        from_secret: github_api_key
+        from_secret: gh_api_key
     commands:
       - echo $DRONE_TAG | grep -v / || exit 78 # Skip if submodule is tagged
       - go mod download
